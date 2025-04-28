@@ -242,3 +242,52 @@ button.selected:disabled {
     background: #f0c674;
     color: black;
 }
+
+/* Responsive pour téléphone (max 600px de largeur) */
+@media screen and (max-width: 600px) {
+
+  /* Réduire la taille du bloc quiz et accueil */
+  #quiz, #welcome {
+    width: 95%;
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  /* Réduire la taille de l'illustration */
+  #illustration img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+  }
+
+  /* Texte question plus petit */
+  #question {
+    font-size: 1.2em;
+  }
+
+  /* Réduire la taille des boutons texte */
+  #answers button {
+    font-size: 1em;
+    padding: 8px;
+    max-width: 250px;
+  }
+
+  /* Réduire la taille des images-réponses */
+  .option-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  /* Réduire les boutons "Valider" et "Suivant" */
+  #validate, #next {
+    font-size: 1em;
+    padding: 8px 16px;
+    max-width: 250px;
+  }
+
+  /* Réduire la taille de l'input accueil */
+  #userInput {
+    width: 90%;
+    font-size: 1em;
+  }
+}
