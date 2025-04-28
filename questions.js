@@ -47,8 +47,8 @@ const questions = [
     {
       type: "text",
       question: "Silco considère Jinx comme :",
-      answers: ["Sa femme", "Son arme", "Sa fille", "Son soldat"],
-      correct: 2,
+      answers: ["Sa femme", "Son arme", "Son soldat", "Sa fille"],
+      correct: 3,
       image: "assets/img/silco-jinx.jpg"
     },
   
