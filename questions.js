@@ -28,7 +28,7 @@ const questions = [
       question: "Quel personnage devient conseiller du Piltover Council ?",
       answers: ["Viktor", "Jayce", "Silco", "Mel Medarda"],
       correct: 1,
-      image: "assets/img/jayce.jpg"
+      image: "assets/img/council.jpg"
     },
     {
       type: "text",
@@ -77,15 +77,15 @@ const questions = [
     {
       type: "text",
       question: "Qui trahit Vander et mène à sa capture ?",
-      answers: ["Marcus", "Silco", "Sevika", "Mylo"],
-      correct: 0,
+      answers: ["Silco", "Marcus", "Sevika", "Mylo"],
+      correct: 1,
       image: "assets/img/vander.jpg"
     },
     {
         type: "text",
         question: "Comment s'appelle la mère de Caitlyn ?",
-        answers: ["Mathilda", "Amber", "Cassandra", "Shoola"],
-        correct: 2,
+        answers: ["Cassandra", "Amber", "Mathilda", "Shoola"],
+        correct: 0,
         image: "assets/img/cassandra.jpg"
       },
       {
@@ -109,8 +109,8 @@ const questions = [
     {
       type: "text",
       question: "Comment s’appelle la ville souterraine sous Piltover ?",
-      answers: ["Undercity", "Zaun", "Dark City", "Piltover"],
-      correct: 1,
+      answers: ["Undercity", "Piltover", "Dark City", "Zaun"],
+      correct: 3,
       image: "assets/img/zaun.jpg"
     },
     {
@@ -124,7 +124,7 @@ const questions = [
       type: "text",
       question: "Qu'a fait Huck à propos de Vi ?",
       answers: ["Il l'a blessé", "Il l'a sauvé", "Il l'a aidé", "Il l'a trahi"],
-      correct: 0,
+      correct: 1,
       image: "assets/img/shimmer.jpg"
     },
   
