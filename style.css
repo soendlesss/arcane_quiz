@@ -1,291 +1,237 @@
 /* Reset de base */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Corps de la page */
 body {
-    height: 100vh;
-    width: 100%;
-    font-family: 'Poppins', sans-serif;
-    background: url('assets/img/fond-arcane.jpg') no-repeat center center fixed;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
+  height: 100vh;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  background: url('assets/img/fond-arcane.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
 }
 
 /* Voile sombre par-dessus l'image */
 body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 0;
 }
 
 /* Titre fixe */
 h1 {
-    color: #f0c674;
-    font-size: 3em;
-    margin: 20px;
-    z-index: 1;
+  color: #f0c674;
+  font-size: 3em;
+  margin: 20px;
+  z-index: 1;
 }
 
-/* Zone du quiz */
-#quiz {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 2px solid #f0c674;
-    border-radius: 20px;
-    padding: 30px;
-    width: 90%;
-    max-width: 600px;
-    text-align: center;
-    margin-top: 30px;
-    position: relative;
-    z-index: 1;
+/* Bloc accueil et quiz */
+#welcome, #quiz {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid #f0c674;
+  border-radius: 20px;
+  padding: 30px;
+  width: 90%;
+  max-width: 700px;
+  text-align: center;
+  margin-top: 30px;
+  position: relative;
+  z-index: 1;
 }
 
 /* Illustration au-dessus de la question */
 #illustration img {
-    width: 80%;
-    max-width: 300px;
-    aspect-ratio: 1 / 1; /* Image carrée */
-    object-fit: cover;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    border: 2px solid #f0c674;
+  width: 80%;
+  max-width: 350px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  border: 2px solid #f0c674;
 }
 
 /* Texte de la question */
 #question {
-    font-size: 1.5em;
-    color: white;
-    margin-bottom: 20px;
+  font-size: 1.8em;
+  color: white;
+  margin-bottom: 20px;
 }
 
 /* Conteneur des réponses */
 #answers {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-/* Si réponses images -> tout sur une ligne */
+/* Si réponses images -> mode grille */
 #answers.image-mode {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
-    gap: 20px;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 /* Style des boutons texte */
 #answers button {
-    background: rgba(240, 198, 116, 0.2);
-    color: white;
-    border: 2px solid #f0c674;
-    border-radius: 12px;
-    padding: 10px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-    max-width: 300px;
+  background: rgba(240, 198, 116, 0.2);
+  color: white;
+  border: 2px solid #f0c674;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
 }
 
-#answers.image-mode button {
-    background: transparent;
-    border: none;
-    padding: 0;
-    width: auto;
-    max-width: none;
-}
-
-/* Hover boutons texte */
+/* Hover sur les boutons texte */
 #answers button:hover {
-    background: #f0c674;
-    color: black;
+  background: #f0c674;
+  color: black;
 }
 
-/* Quand en mode image : boutons sans fond, sans bordure */
+/* Quand mode image : boutons sans fond */
 #answers.image-mode button {
-    width: auto;
-    max-width: none;
-    background: transparent;
-    border: none;
-    padding: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: auto;
+  max-width: none;
 }
 
+/* Style des images-réponses */
 .option-image {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 15px;
-    border: 2px solid #f0c674;
-    transition: transform 0.3s;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 2px solid #f0c674;
+  transition: transform 0.3s;
 }
 
+/* Hover sur images */
 .option-image:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
-
-/* Réponse sélectionnée (texte ou image) */
+/* Réponse sélectionnée */
 button.selected,
 button.selected:disabled {
-    background: #f0c674;
-    color: black;
-    border: 2px solid #f0c674;
-    box-shadow: 0 0 10px #f0c674;
+  background: #f0c674;
+  color: black;
+  border: 2px solid #f0c674;
+  box-shadow: 0 0 10px #f0c674;
 }
 
 /* Feedback (Bonne réponse / Mauvaise réponse) */
 #feedback {
-    margin-top: 20px;
-    font-size: 1.3em;
-    font-weight: bold;
-    color: white;
+  margin-top: 20px;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: white;
 }
 
 /* Boutons Valider et Question suivante */
-#validate, 
-#next {
-    background: rgba(240, 198, 116, 0.2);
-    color: white;
-    border: 2px solid #f0c674;
-    border-radius: 12px;
-    padding: 10px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    white-space: nowrap;
-    margin-top: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+#validate, #next {
+  background: rgba(240, 198, 116, 0.2);
+  color: white;
+  border: 2px solid #f0c674;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 20px;
 }
 
-/* Hover sur Valider et Suivant */
-#validate:hover,
-#next:hover {
-    background: #f0c674;
-    color: black;
+/* Hover Valider et Suivant */
+#validate:hover, #next:hover {
+  background: #f0c674;
+  color: black;
 }
 
-#welcome, #quiz {
-    position: relative;
-    z-index: 1; /* Plus haut que le body::before */
-}
-
-#welcome {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 2px solid #f0c674;
-    border-radius: 20px;
-    padding: 30px;
-    width: 90%;
-    max-width: 600px;
-    text-align: center;
-    margin-top: 30px;
-    color: white;
-}
-
+/* Style pour l'accueil */
 #welcome-text {
-    font-size: 1.5em;
-    margin-bottom: 20px;
+  font-size: 1.8em;
+  margin-bottom: 20px;
 }
 
 #userInput {
-    padding: 10px;
-    font-size: 1.1em;
-    border: 2px solid #f0c674;
-    border-radius: 12px;
-    background: rgba(240, 198, 116, 0.2);
-    color: white;
-    width: 80%;
-    max-width: 300px;
-    outline: none;
-    margin-bottom: 20px;
+  padding: 10px;
+  font-size: 1.2em;
+  border: 2px solid #f0c674;
+  border-radius: 12px;
+  background: rgba(240, 198, 116, 0.2);
+  color: white;
+  width: 80%;
+  max-width: 300px;
+  outline: none;
+  margin-bottom: 20px;
 }
 
 #userInput::placeholder {
-    color: #ddd;
+  color: #ddd;
 }
 
-#startBtn {
-    background: rgba(240, 198, 116, 0.2);
-    color: white;
-    border: 2px solid #f0c674;
-    border-radius: 12px;
-    padding: 10px 20px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 10px;
-}
-
-#startBtn:hover {
-    background: #f0c674;
-    color: black;
-}
-
-/* Responsive pour téléphone (max 600px de largeur) */
+/* ========================= */
+/* Responsive mobile (max 600px) */
+/* ========================= */
 @media screen and (max-width: 600px) {
 
-  /* Réduire la taille du bloc quiz et accueil */
   #quiz, #welcome {
     width: 95%;
     padding: 20px;
     border-radius: 15px;
   }
 
-  /* Réduire la taille de l'illustration */
   #illustration img {
     width: 100%;
     max-width: 250px;
     height: auto;
   }
 
-  /* Texte question plus petit */
   #question {
     font-size: 1.2em;
   }
 
-  /* Réduire la taille des boutons texte */
   #answers button {
     font-size: 1em;
     padding: 8px;
     max-width: 250px;
   }
 
-  /* Réduire la taille des images-réponses */
   .option-image {
     width: 120px;
     height: 120px;
   }
 
-  /* Réduire les boutons "Valider" et "Suivant" */
   #validate, #next {
     font-size: 1em;
     padding: 8px 16px;
     max-width: 250px;
   }
 
-  /* Réduire la taille de l'input accueil */
   #userInput {
     width: 90%;
     font-size: 1em;
