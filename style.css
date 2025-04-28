@@ -242,3 +242,47 @@ button.selected:disabled {
     background: #f0c674;
     color: black;
 }
+
+/* ========================= */
+/* Responsive mobile (max 600px) */
+/* ========================= */
+@media screen and (max-width: 600px) {
+
+    #quiz, #welcome {
+      width: 95%;
+      padding: 20px;
+      border-radius: 15px;
+    }
+  
+    #illustration img {
+      width: 100%;
+      max-width: 250px;
+      height: auto;
+    }
+  
+    #question {
+      font-size: 1.2em;
+    }
+  
+    #answers button {
+      font-size: 1em;
+      padding: 8px;
+      max-width: 250px;
+    }
+  
+    .option-image {
+      width: 120px;
+      height: 120px;
+    }
+  
+    #validate, #next {
+      font-size: 1em;
+      padding: 8px 16px;
+      max-width: 250px;
+    }
+  
+    #userInput {
+      width: 90%;
+      font-size: 1em;
+    }
+  }
