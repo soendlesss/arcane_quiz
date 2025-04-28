@@ -5,16 +5,9 @@ const questions = [
     {
       type: "text",
       question: "Quel est le vrai prénom de Jinx avant sa transformation ?",
-      answers: ["Powder", "Vi", "Caitlyn", "Sevika"],
-      correct: 0,
+      answers: ["Pandra", "Pewder", "Powder", "Piper"],
+      correct: 2,
       image: "assets/img/powder.jpg"
-    },
-    {
-      type: "text",
-      question: "Comment s’appelle la sœur de Vi ?",
-      answers: ["Jinx", "Caitlyn", "Sevika", "Grayson"],
-      correct: 0,
-      image: "assets/img/vi.jpg"
     },
     {
       type: "text",
@@ -25,29 +18,36 @@ const questions = [
     },
     {
       type: "text",
-      question: "Comment s’appelle le leader du gang ennemi de Vander ?",
+      question: "Comment s’appelle le leader du groupe ennemi de Vander ?",
       answers: ["Silco", "Finn", "Ekko", "Marcus"],
       correct: 0,
       image: "assets/img/silco.jpg"
     },
     {
       type: "text",
-      question: "Quel personnage devient conseiller du Piltover Council grâce à ses recherches sur l’Hextech ?",
+      question: "Quel personnage devient conseiller du Piltover Council ?",
       answers: ["Viktor", "Jayce", "Silco", "Mel Medarda"],
       correct: 1,
       image: "assets/img/jayce.jpg"
     },
     {
       type: "text",
+      question: "Comment s’appelle la sœur de Vi ?",
+      answers: ["Jinx", "Caitlyn", "Sevika", "Grayson"],
+      correct: 0,
+      image: "assets/img/vi.jpg"
+    },
+    {
+      type: "text",
       question: "Qui est Mel Medarda ?",
-      answers: ["Une scientifique", "Une criminelle", "Une conseillère du Conseil de Piltover", "Une sœur de Jinx"],
+      answers: ["Une scientifique", "Une criminelle", "Une conseillère", "La soeur de Jayce"],
       correct: 2,
       image: "assets/img/mel.jpg"
     },
     {
       type: "text",
-      question: "Comment Silco considère Jinx ?",
-      answers: ["Sa meuf", "Son arme", "Sa fille", "Son soldat"],
+      question: "Silco considère Jinx comme :",
+      answers: ["Sa femme", "Son arme", "Sa fille", "Son soldat"],
       correct: 2,
       image: "assets/img/silco-jinx.jpg"
     },
@@ -63,14 +63,14 @@ const questions = [
     {
       type: "text",
       question: "Lors de la toute première mission de Powder, que vole-t-elle accidentellement ?",
-      answers: ["Une arme", "Des cristaux", "Un journal secret", "Une potion"],
+      answers: ["Une arme", "Des cristaux", "Un journal secret", "Un sandwich"],
       correct: 1,
       image: "assets/img/cristaux.jpg"
     },
     {
       type: "text",
       question: "Quel événement déclenche la transformation mentale de Powder en Jinx ?",
-      answers: ["La perte de Vander", "La trahison de Vi", "La mort accidentelle de ses amis dans l'explosion", "La blessure de Silco"],
+      answers: ["La perte de Vander", "La trahison de Vi", "La mort de ses amis dans l'explosion", "La blessure de Silco"],
       correct: 2,
       image: "assets/img/explosion.jpg"
     },
@@ -116,9 +116,16 @@ const questions = [
     {
       type: "text",
       question: "Comment se nomme l'invention de Viktor censée sauver Zaun de la pauvreté et des maladies ?",
-      answers: ["Hexcore", "Hextech Drive", "Piltover Core", "Zaun Engine"],
+      answers: ["Hexcore", "Piltover Core", "Hextech", "Zaun Engine"],
       correct: 0,
       image: "assets/img/hexcore.jpg"
+    },
+    {
+      type: "text",
+      question: "Qu'a fait Huck à propos de Vi ?",
+      answers: ["Il l'a blessé", "Il l'a sauvé", "Il l'a aidé", "Il l'a trahi"],
+      correct: 0,
+      image: "assets/img/shimmer.jpg"
     },
   
     // 🎨 Questions "Qui est-ce ?" (images uniquement)
@@ -210,6 +217,28 @@ const questions = [
       ],
       correct: 2
     },
+    {
+      type: "image",
+      question: "Qui est Claggor ?",
+      answers: [
+        { image: "assets/img/salo.jpg", label: "Salo" },
+        { image: "assets/img/mylo.jpg", label: "Mylo" },
+        { image: "assets/img/claggor.jpg", label: "Claggor" },
+        { image: "assets/img/marcus.jpg", label: "Marcus" }
+      ],
+      correct: 2
+    },
+    {
+      type: "image",
+      question: "Qui est Elora ?",
+      answers: [
+        { image: "assets/img/sky.jpg", label: "Sky" },
+        { image: "assets/img/cassandra.jpg", label: "Cassandra" },
+        { image: "assets/img/grayson.jpg", label: "Grayson" },
+        { image: "assets/img/elora.jpg", label: "Elora" }
+      ],
+      correct: 3
+    },
   
     // 🧩 Bonus Vrai ou Faux
     {
@@ -228,7 +257,7 @@ const questions = [
     },
     {
       type: "text",
-      question: "Vrai ou Faux : Vi et Caitlyn deviennent alliées au cours de la saison 1.",
+      question: "Vrai ou Faux : Vi et Caitlyn deviennent alliées.",
       answers: ["Vrai", "Faux"],
       correct: 0,
       image: "assets/img/vi-caitlyn.jpg"
@@ -253,6 +282,68 @@ const questions = [
         answers: ["Vrai", "Faux"],
         correct: 0,
         image: "assets/img/silco.jpg"
-      }
+      },
+      {
+        type: "text",
+        question: "Vrai ou Faux : L'Hextech a été inventé pour se défendre contre Zaun.",
+        answers: ["Vrai", "Faux"],
+        correct: 1,
+        image: "assets/img/hextech.jpg"
+      },
+      {
+        type: "text",
+        question: "Vrai ou Faux : Vi rejoint les Fireflights.",
+        answers: ["Vrai", "Faux"],
+        correct: 1,
+        image: "assets/img/fireflights.jpg"
+      },
+      {
+        type: "text",
+        question: "Vrai ou Faux : Heimerdinger est banni du Conseil par Mel.",
+        answers: ["Vrai", "Faux"],
+        correct: 1,
+        image: "assets/img/heimerdinger.jpg"
+      },
+      {
+        type: "text",
+        question: "Vrai ou Faux : Viktor est d'abord hostile à l'utilisation de la magie.",
+        answers: ["Vrai", "Faux"],
+        correct: 0,
+        image: "assets/img/viktor.jpg"
+      },
+      {
+        type: "text",
+        question: "Vrai ou Faux : Silco adopte vraiment Jinx.",
+        answers: ["Vrai", "Faux"],
+        correct: 0,
+        image: "assets/img/silco-jinx.jpg"
+      },
+      {
+        type: "text",
+        question: "Vrai ou Faux : Caitlyn et Jayce étaient en couple à l'Académie.",
+        answers: ["Vrai", "Faux"],
+        correct: 1,
+        image: "assets/img/caitlyn-jayce.jpg"
+      },
+      {
+        type: "text",
+        question: "Vrai ou Faux :  Powder tue accidentellement ses amis.",
+        answers: ["Vrai", "Faux"],
+        correct: 0,
+        image: "assets/img/friends.jpg"
+      },
+      {
+        type: "text",
+        question: "Vrai ou Faux :   Mel est originaire d'une cité paisible.",
+        answers: ["Vrai", "Faux"],
+        correct: 1,
+        image: "assets/img/mel.jpg"
+      },
+      {
+        type: "text",
+        question: "Vrai ou Faux :   T'as gagné 1000 points pour avoir terminé la saison 1.",
+        answers: ["Vrai", "Faux"],
+        correct: 0,
+        image: "assets/img/arcade.jpg"
+      },  
   ];
-  
