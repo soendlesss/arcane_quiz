@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arcane Quiz</title>
+  <link rel="stylesheet" href="style.css"> <!-- Ton CSS déjà fait -->
+</head>
+<body>
+
+<h1>Arcane Quiz</h1>
+
+<!-- Page d'accueil -->
+<div id="welcome">
+  <div id="welcome-text">Qui es-tu ?</div>
+  <input type="text" id="userInput" placeholder="Ton prénom et ton nom">
+  <button id="startBtn">Valider</button>
+  <div id="welcome-error" style="color: red; margin-top: 10px;"></div>
+</div>
+
+<!-- Quiz (caché au début) -->
+<div id="quiz" style="display: none;">
+  <div id="illustration"></div>
+  <div id="question"></div>
+  <div id="answers"></div>
+  <div id="feedback"></div>
+  <button id="validate" style="display:none;">Valider ma réponse</button>
+  <button id="next" style="display:none;">Question suivante</button>
+</div>
+
+<!-- Charger JS -->
+<script src="questions.js"></script> <!-- Important : d'abord questions -->
+<script src="script.js"></script>    <!-- Puis ton script principal -->
+</body>
+</html>
