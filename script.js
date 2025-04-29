@@ -1,7 +1,10 @@
 // script.js
 
 // 1. Configuration du nom autorisé
-const allowedUser = "Manon Lavoine"; // Change ici selon ton besoin
+const allowedUsers = [
+  "Manon Lavoine",
+  "Allison Colombier",
+];
 
 // 2. Sélection des éléments HTML
 const welcomeDiv = document.getElementById("welcome");
