@@ -1,44 +1,35 @@
 // script.js
 
-// 1. Configuration du nom autorisé
 const allowedUsers = [
-  "Manon Lavoine",
-  "Allison Colombier",
+  "Buddy du Code",
+  "Jinx Leblue",
+  "Vi Zaun",
+  "Jayce Talis"
 ];
 
-// 2. Sélection des éléments HTML
+// Sélection des éléments
 const welcomeDiv = document.getElementById("welcome");
 const userInput = document.getElementById("userInput");
 const startBtn = document.getElementById("startBtn");
 const welcomeError = document.getElementById("welcome-error");
-
 const quizDiv = document.getElementById("quiz");
-const questionEl = document.getElementById("question");
-const answersEl = document.getElementById("answers");
-const feedbackEl = document.getElementById("feedback");
-const nextBtn = document.getElementById("next");
-const validateBtn = document.getElementById("validate");
-const illustrationEl = document.getElementById("illustration");
 
-let currentQuestion = 0;
-let score = 0;
-let selectedAnswerIndex = null;
-
-// 3. Accueil : vérifier prénom/nom
+// Écouteur du bouton "Valider"
 startBtn.addEventListener("click", () => {
-  const userValue = userInput.value.trim().toLowerCase();
+  const inputValue = userInput.value.trim().toLowerCase();
 
-  // Vérifie si le nom tapé correspond à un des noms autorisés
-  const match = allowedUsers.some(name => name.toLowerCase() === userValue);
+  // Vérifie si l'input correspond à un des noms autorisés
+  const isAllowed = allowedUsers.some(name => name.toLowerCase() === inputValue);
 
-  if (match) {
+  if (isAllowed) {
     welcomeDiv.style.display = "none";
     quizDiv.style.display = "block";
-    showQuestion();
+    showQuestion(); // ou ta fonction qui lance le quiz
   } else {
     welcomeError.textContent = "Nom ou prénom incorrect ! 🚫";
   }
 });
+
 
 // 4. Afficher une question
 function showQuestion() {
