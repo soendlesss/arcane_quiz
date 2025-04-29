@@ -23,6 +23,7 @@ window.onload = () => {
     if (isAllowed) {
       welcomeDiv.style.display = "none";
       quizDiv.style.display = "block";
+      console.log("✅ Accès autorisé !");
       if (typeof showQuestion === "function") {
         showQuestion(); // Seulement si la fonction est bien définie
       } else {
