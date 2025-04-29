@@ -1,7 +1,14 @@
 // script.js
 
-window.onload = () => {
+// Variables globales
+let currentQuestion = 0;
+let score = 0;
+let selectedAnswerIndex = null;
 
+let welcomeDiv, userInput, startBtn, welcomeError, quizDiv;
+let questionEl, answersEl, feedbackEl, nextBtn, validateBtn, illustrationEl;
+
+window.onload = () => {
   const allowedUsers = [
     "Manon Lavoine",
     "Allison Colombier",
@@ -9,13 +16,21 @@ window.onload = () => {
     "Camille Leclercq"
   ];
 
-  // Sélection des éléments
-  const welcomeDiv = document.getElementById("welcome");
-  const userInput = document.getElementById("userInput");
-  const startBtn = document.getElementById("startBtn");
-  const welcomeError = document.getElementById("welcome-error");
-  const quizDiv = document.getElementById("quiz");
+  // Sélection des éléments HTML
+  welcomeDiv = document.getElementById("welcome");
+  userInput = document.getElementById("userInput");
+  startBtn = document.getElementById("startBtn");
+  welcomeError = document.getElementById("welcome-error");
+  quizDiv = document.getElementById("quiz");
 
+  questionEl = document.getElementById("question");
+  answersEl = document.getElementById("answers");
+  feedbackEl = document.getElementById("feedback");
+  nextBtn = document.getElementById("next");
+  validateBtn = document.getElementById("validate");
+  illustrationEl = document.getElementById("illustration");
+
+  // Bouton "Valider" (accueil)
   startBtn.addEventListener("click", () => {
     const inputValue = userInput.value.trim().toLowerCase();
     const isAllowed = allowedUsers.some(name => name.toLowerCase() === inputValue);
@@ -24,19 +39,43 @@ window.onload = () => {
       welcomeDiv.style.display = "none";
       quizDiv.style.display = "block";
       console.log("✅ Accès autorisé !");
-      if (typeof showQuestion === "function") {
-        showQuestion(); // Seulement si la fonction est bien définie
-      } else {
-        console.error("⚠️ Fonction showQuestion() non trouvée !");
-      }
+      showQuestion();
     } else {
       welcomeError.textContent = "Nom ou prénom incorrect ! 🚫";
     }
   });
 
+  // Bouton "Valider la réponse"
+  validateBtn.addEventListener("click", () => {
+    if (selectedAnswerIndex === null) return;
+
+    const q = questions[currentQuestion];
+
+    Array.from(answersEl.children).forEach(btn => btn.disabled = true);
+
+    if (selectedAnswerIndex === q.correct) {
+      feedbackEl.textContent = "Bonne réponse ! 🎉";
+      score++;
+    } else {
+      feedbackEl.textContent = "Mauvaise réponse...";
+    }
+
+    validateBtn.style.display = "none";
+    nextBtn.style.display = "block";
+  });
+
+  // Bouton "Question suivante"
+  nextBtn.addEventListener("click", () => {
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+      showQuestion();
+    } else {
+      showScore();
+    }
+  });
 };
 
-// 4. Afficher une question
+// Affiche une question
 function showQuestion() {
   feedbackEl.textContent = "";
   answersEl.innerHTML = "";
@@ -48,7 +87,7 @@ function showQuestion() {
   const q = questions[currentQuestion];
   questionEl.textContent = q.question;
 
-  // Illustration image si question de type texte
+  // Image au-dessus de la question
   if (q.type === "text" && q.image) {
     const img = document.createElement("img");
     img.src = q.image;
@@ -57,7 +96,7 @@ function showQuestion() {
     illustrationEl.appendChild(img);
   }
 
-  // Réponses texte ou image
+  // Réponses texte
   if (q.type === "text") {
     answersEl.classList.remove("image-mode");
     q.answers.forEach((answer, index) => {
@@ -66,7 +105,9 @@ function showQuestion() {
       btn.onclick = () => selectAnswer(index);
       answersEl.appendChild(btn);
     });
-  } else if (q.type === "image") {
+  }
+  // Réponses image
+  else if (q.type === "image") {
     answersEl.classList.add("image-mode");
     q.answers.forEach((answer, index) => {
       const btn = document.createElement("button");
@@ -81,11 +122,10 @@ function showQuestion() {
   }
 }
 
-// 5. Sélection d'une réponse
+// Sélection d'une réponse
 function selectAnswer(index) {
   selectedAnswerIndex = index;
 
-  // Reset visuel
   Array.from(answersEl.children).forEach((btn, idx) => {
     btn.classList.remove("selected");
     if (btn.querySelector('img')) {
@@ -95,7 +135,6 @@ function selectAnswer(index) {
     btn.style.color = "white";
   });
 
-  // Appliquer style sélectionné
   const selectedButton = answersEl.children[index];
   selectedButton.classList.add("selected");
 
@@ -109,36 +148,7 @@ function selectAnswer(index) {
   validateBtn.style.display = "block";
 }
 
-// 6. Valider la réponse
-validateBtn.addEventListener("click", () => {
-  if (selectedAnswerIndex === null) return;
-
-  const q = questions[currentQuestion];
-
-  Array.from(answersEl.children).forEach(btn => btn.disabled = true);
-
-  if (selectedAnswerIndex === q.correct) {
-    feedbackEl.textContent = "Bonne réponse ! 🎉";
-    score++;
-  } else {
-    feedbackEl.textContent = "On est obligé de regarder de nouveau ensemble...";
-  }
-
-  validateBtn.style.display = "none";
-  nextBtn.style.display = "block";
-});
-
-// 7. Passer à la question suivante
-nextBtn.addEventListener("click", () => {
-  currentQuestion++;
-  if (currentQuestion < questions.length) {
-    showQuestion();
-  } else {
-    showScore();
-  }
-});
-
-// 8. Afficher le score final
+// Affiche le score final
 function showScore() {
   questionEl.textContent = "Quiz terminé ! 🎉";
   answersEl.innerHTML = `<div style="color: white;">Tu as obtenu ${score} bonne(s) réponse(s) sur ${questions.length}.</div>`;
