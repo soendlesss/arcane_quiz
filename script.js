@@ -1,34 +1,39 @@
 // script.js
 
-const allowedUsers = [
-  "Manon Lavoine",
-  "Allison Colombier",
-  "Ethan Langlois"
-];
+window.onload = () => {
 
-// Sélection des éléments
-const welcomeDiv = document.getElementById("welcome");
-const userInput = document.getElementById("userInput");
-const startBtn = document.getElementById("startBtn");
-const welcomeError = document.getElementById("welcome-error");
-const quizDiv = document.getElementById("quiz");
+  const allowedUsers = [
+    "Manon Lavoine",
+    "Allison Colombier",
+    "Ethan Langlois",
+    "Camille Leclercq"
+  ];
 
-// Écouteur du bouton "Valider"
-startBtn.addEventListener("click", () => {
-  const inputValue = userInput.value.trim().toLowerCase();
+  // Sélection des éléments
+  const welcomeDiv = document.getElementById("welcome");
+  const userInput = document.getElementById("userInput");
+  const startBtn = document.getElementById("startBtn");
+  const welcomeError = document.getElementById("welcome-error");
+  const quizDiv = document.getElementById("quiz");
 
-  // Vérifie si l'input correspond à un des noms autorisés
-  const isAllowed = allowedUsers.some(name => name.toLowerCase() === inputValue);
+  startBtn.addEventListener("click", () => {
+    const inputValue = userInput.value.trim().toLowerCase();
+    const isAllowed = allowedUsers.some(name => name.toLowerCase() === inputValue);
 
-  if (isAllowed) {
-    welcomeDiv.style.display = "none";
-    quizDiv.style.display = "block";
-    showQuestion(); // ou ta fonction qui lance le quiz
-  } else {
-    welcomeError.textContent = "Nom ou prénom incorrect ! 🚫";
-  }
-});
+    if (isAllowed) {
+      welcomeDiv.style.display = "none";
+      quizDiv.style.display = "block";
+      if (typeof showQuestion === "function") {
+        showQuestion(); // Seulement si la fonction est bien définie
+      } else {
+        console.error("⚠️ Fonction showQuestion() non trouvée !");
+      }
+    } else {
+      welcomeError.textContent = "Nom ou prénom incorrect ! 🚫";
+    }
+  });
 
+};
 
 // 4. Afficher une question
 function showQuestion() {
