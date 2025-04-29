@@ -1,10 +1,9 @@
 // script.js
 
 const allowedUsers = [
-  "Buddy du Code",
-  "Jinx Leblue",
-  "Vi Zaun",
-  "Jayce Talis"
+  "Manon Lavoine",
+  "Allison Colombier",
+  "Ethan Langlois"
 ];
 
 // Sélection des éléments
