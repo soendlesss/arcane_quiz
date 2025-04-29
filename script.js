@@ -28,14 +28,15 @@ let selectedAnswerIndex = null;
 startBtn.addEventListener("click", () => {
   const userValue = userInput.value.trim();
 
-  if (userValue.toLowerCase() === allowedUser.toLowerCase()) {
-    welcomeDiv.style.display = "none";
-    quizDiv.style.display = "block";
-    showQuestion();
-  } else {
-    welcomeError.textContent = "Nom ou prénom incorrect ! 🚫";
-  }
-});
+const match = allowedUsers.some(name => name.toLowerCase() === userValue.toLowerCase());
+
+if (match) {
+  welcomeDiv.style.display = "none";
+  quizDiv.style.display = "block";
+  showQuestion();
+} else {
+  welcomeError.textContent = "Nom ou prénom incorrect ! 🚫";
+}
 
 // 4. Afficher une question
 function showQuestion() {
