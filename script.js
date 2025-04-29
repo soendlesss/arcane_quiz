@@ -26,17 +26,19 @@ let selectedAnswerIndex = null;
 
 // 3. Accueil : vérifier prénom/nom
 startBtn.addEventListener("click", () => {
-  const userValue = userInput.value.trim();
+  const userValue = userInput.value.trim().toLowerCase();
 
-const match = allowedUsers.some(name => name.toLowerCase() === userValue.toLowerCase());
+  // Vérifie si le nom tapé correspond à un des noms autorisés
+  const match = allowedUsers.some(name => name.toLowerCase() === userValue);
 
-if (match) {
-  welcomeDiv.style.display = "none";
-  quizDiv.style.display = "block";
-  showQuestion();
-} else {
-  welcomeError.textContent = "Nom ou prénom incorrect ! 🚫";
-}
+  if (match) {
+    welcomeDiv.style.display = "none";
+    quizDiv.style.display = "block";
+    showQuestion();
+  } else {
+    welcomeError.textContent = "Nom ou prénom incorrect ! 🚫";
+  }
+});
 
 // 4. Afficher une question
 function showQuestion() {
