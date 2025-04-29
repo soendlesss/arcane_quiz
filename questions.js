@@ -124,7 +124,7 @@ const questions = [
       type: "text",
       question: "Qu'a fait Huck à propos de Vi ?",
       answers: ["Il l'a blessé", "Il l'a sauvé", "Il l'a aidé", "Il l'a trahi"],
-      correct: 1,
+      correct: 3,
       image: "assets/img/shimmer.jpg"
     },
   
